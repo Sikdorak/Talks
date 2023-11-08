@@ -1,0 +1,264 @@
+@charset "UTF-8";
+#background {
+    width: 100%;
+    height: 2000px;
+    background-color: white;
+}
+
+#toptap {
+    width: 1500px;
+    height: 150px;
+    margin: 0 auto;
+    display: flex;
+    position: relative;
+}
+
+.table_cell {
+    display: table-cell;
+    text-align: center;
+}
+
+#logo {
+    width: 400px;
+    height: 150px;
+    margin: 0px;
+}
+
+/* 로고 */
+
+#logoimg{
+    width: 400px;
+    height: 150px;
+}
+
+#searchbar {
+    background-color: rebeccapurple;
+    width: 800px;
+    height: 50px;
+}
+
+#searchdiv{
+    display: flex;
+    position: absolute;
+    top:40px;
+    left: 40px;
+}
+
+#login {
+    position: absolute;
+    right: 0;
+    top:0;
+}
+
+#toptap input[type="search"] {
+    display: relative;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #08088A;
+    width: 600px;
+    height: 50px;
+    top: 100px;
+}
+
+
+#toptap a.search {
+    padding: 10px 15px 10px 15px;
+    margin-left: 10px;
+    border-radius: 10px;
+    background-color: tomato;
+    color: #fff;
+}
+
+#t1 {
+    width: 400px;
+    height: 150px;
+}
+
+#t2 {
+    width: 800px;
+    height: 150px;
+    position: relative;
+}
+
+#midtap {
+    display: flex;
+    width: 1500px;
+    height: 800px;
+    margin: 0 auto;
+    border: 1px solid #444444;
+}
+
+/* 중간탭 */
+
+#lefttap {
+    color: white;
+    width: 250px;
+}
+/* 카테고리 */
+
+a:visited{
+    color: black;
+}
+
+a:link{
+    color: black;
+}
+
+#category_menu {
+    width: 250px;
+    background-color: #08088A;
+}
+
+.category_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 10px;
+    text-align: center;
+    color:#00BFFF;
+    background-color: #08088A;
+}
+
+.category_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 10px;
+    text-align: center;
+    color:white;
+    background-color: #00BFFF;
+    text-decoration: none;
+}
+
+#middletap {
+    width: 1100px;
+    height: 1500px;
+    background-color: white;
+}
+
+/* 메인 */
+
+
+#billboard {
+    background-image: url('/resources/images/banner1.jpg');
+    width: 1100px;
+    height: 100px;
+}
+
+#boardtitle{
+	width: 1100px;
+	height: 50px;
+    font-weight: bold;
+    color: black;
+    background-color: orange;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 40px;
+}
+
+#category{
+	width: 1100px;
+	height: 20px;
+	text-align: center;
+}
+
+#category a {
+    display: inline-block;
+    margin: 0 10px; 
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+table, th, td {
+	border: 1px solid #ccc;
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	padding: 0;
+}
+
+.pagination li {
+	margin: 0 5px;
+}
+
+.pagination a {
+	text-decoration: none;
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+.pagination a:hover {
+	background-color: #0056b3;
+}
+
+form.search-form {
+    text-align: center; /* 수평 가운데 정렬 */
+    margin: 0 auto; /* 수평 가운데 정렬을 위해 좌우 여백을 자동으로 조정 */
+    width: 60%; /* 폼의 가로 너비를 조정할 수 있습니다. 필요에 따라 조절하세요. */
+}
+
+/* 선택상자와 입력 상자를 가운데 정렬하면서 같은 줄에 표시 */
+form.search-form select,
+form.search-form input[type="text"] {
+    display: inline-block; /* 인라인 블록 요소로 설정하여 같은 줄에 표시 */
+    margin: 0 10px; /* 좌우 여백을 추가하여 간격 조절 */
+}
+
+form.search-form input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form.search-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+#righttap {
+    width: 150px;
+    height: 800px;
+}
+
+/* 광고 및 화제글 */
+
+#topic, #billboard_2 {
+    display: flex;
+    flex-direction: column; /* 세로 정렬을 위해 열 방향으로 설정 */
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
+    height: 100vh; /* 화면 높이 만큼 세로 중앙 정렬 */
+    width: 150px;
+    height: 400px;
+}
+
+#topic{
+    position: relative;
+    width: 150px;
+    background-color: #00BFFF;
+}
+
+#billboard_2{
+    position:relative;
+}

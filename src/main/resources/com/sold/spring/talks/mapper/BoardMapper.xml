@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sold.spring.talks.mapper.BoardMapper">
+
+	<select id="getPostsList"
+		resultType="com.sold.spring.talks.dto.BoardDto">
+		SELECT * FROM posts
+		WHERE
+		<choose>
+			<when test="searchType == 'title'">
+				posts_title LIKE CONCAT('%', #{searchWord}, '%')
+			</when>
+			<when test="searchType == 'content'">
+				posts_content LIKE CONCAT('%', #{searchWord}, '%')
+			</when>
+			<when test="searchType == 'writer'">
+				member_nickname LIKE CONCAT('%', #{searchWord}, '%')
+			</when>
+	        <when test="searchType == 'title_content'">
+	            (posts_title LIKE CONCAT('%', #{searchWord}, '%') AND 
+	            (posts_main_category = #{posts_main_category} AND posts_sub_category = #{posts_sub_category})) OR
+	            (posts_content LIKE CONCAT('%', #{searchWord}, '%') AND 
+	            (posts_main_category = #{posts_main_category} AND posts_sub_category = #{posts_sub_category}))
+	        </when>
+			<otherwise>
+				1=1
+			</otherwise>
+		</choose>
+		AND posts_main_category = #{posts_main_category}
+		AND posts_sub_category = #{posts_sub_category}
+		<if test="posts_minor_category != null">
+			AND posts_minor_category = #{posts_minor_category}
+		</if>
+		ORDER BY posts_num DESC
+		LIMIT #{startIndex}, #{pageAmount};
+	</select>
+
+	<select id="totalPostsCount" resultType="int">
+		SELECT COUNT(*) FROM posts
+		WHERE
+		<choose>
+			<when test="searchType == 'title'">
+				posts_title LIKE CONCAT('%', #{searchWord}, '%')
+			</when>
+			<when test="searchType == 'content'">
+				posts_content LIKE CONCAT('%', #{searchWord}, '%')
+			</when>
+			<when test="searchType == 'writer'">
+				member_nickname LIKE CONCAT('%', #{searchWord}, '%')
+			</when>
+	        <when test="searchType == 'title_content'">
+	            (posts_title LIKE CONCAT('%', #{searchWord}, '%') AND 
+	            (posts_main_category = #{posts_main_category} AND posts_sub_category = #{posts_sub_category})) OR
+	            (posts_content LIKE CONCAT('%', #{searchWord}, '%') AND 
+	            (posts_main_category = #{posts_main_category} AND posts_sub_category = #{posts_sub_category}))
+	        </when>
+			<otherwise>
+				1=1
+			</otherwise>
+		</choose>
+		AND posts_main_category = #{posts_main_category}
+		AND posts_sub_category = #{posts_sub_category}
+		<if test="posts_minor_category != null">
+			AND posts_minor_category = #{posts_minor_category}
+		</if>
+		;
+	</select>
+
+	<select id="getRead"
+		resultType="com.sold.spring.talks.dto.BoardDto">
+		SELECT * FROM posts WHERE posts_num = #{posts_num}
+	</select>
+	
+	<insert id="createPost">
+		INSERT INTO posts (posts_title, posts_content, member_nickname, posts_main_category, posts_sub_category, posts_minor_category)
+		VALUES (#{posts_title}, #{posts_content}, #{member_nickname}, #{posts_main_category}, #{posts_sub_category}, #{posts_minor_category});
+	</insert>
+	
+	<delete id="deletePost">
+		DELETE FROM posts WHERE posts_num = #{posts_num};
+	</delete>
+	
+	<update id="modifyPost">
+		UPDATE posts SET posts_title = #{posts_title}, posts_content = #{posts_content} WHERE posts_num = #{posts_num};
+	</update>
+	
+	<select id="data1List" resultType="com.sold.spring.talks.dto.BoardDto">
+		SELECT * FROM posts WHERE posts_sub_category = 'soccer' ORDER BY posts_num DESC LIMIT 10;
+	</select>
+	
+	<select id="data2List" resultType="com.sold.spring.talks.dto.BoardDto">
+		SELECT * FROM posts WHERE posts_sub_category = 'baseball' ORDER BY posts_num DESC LIMIT 10;
+	</select>
+</mapper>
